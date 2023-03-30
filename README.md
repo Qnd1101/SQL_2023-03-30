@@ -40,11 +40,12 @@ from employees EMP, employees MGR
 where EMP.hire_date < MGR.hire_date and EMP.manager_id = MGR.employee_id; -- 셀프조인
 
 J-5) 사원정보(employee_id, last_name, manager_id)와 사원의 직속 상관정보(employee_id, last_name) 조회하시오
-select EMP.employee_id as 사원번호,     
-	EMP.last_name as 사원이름,           
-	EMP.manager_id as 사원의매니저번호,           
-	MGR.employee_id AS 매니저의사원번호,        
-	MGR.last_name as 매니저이름        
-from employees EMP, employees MGR    
-where EMP.manager_id = MGR.employee_id        
-order by EMP.employee_id; -- 왼쪽외부조인     
+-- 외부조인을 이용하여 Null 값도 조회함
+select EMP.employee_id as 사원번호, 
+	EMP.last_name as 사원이름, 
+	EMP.manager_id as 사원의매니저번호, 
+	MGR.employee_id AS 매니저의사원번호, 
+	MGR.last_name as 매니저이름
+from employees EMP, employees MGR
+where EMP.manager_id = MGR.employee_id(+)
+order by EMP.employee_id;

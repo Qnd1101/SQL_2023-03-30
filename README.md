@@ -17,7 +17,7 @@
 ### 셀프조인(self join)
    * 1개의 테이블로 가상의 2개의 테이블을 만들어 조인
    
-* 조인문 연습
+### 조인문 연습
 J-1) 급여가 3000이상인 employee_id, last_name, salary, department_name, city 을 조회하시오
 select E.employee_id, E.last_name, E.salary, D.department_name, L.city    
 from employees E, departments D, locations L    
